@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".radioBtnType").click(function () {
+                if (this.value == 'virus') {
+                    $("#virusesContainer").show()
+                    $("#capitalsContainer").hide()
+                } else {
+                    $("#capitalsContainer").show()
+                    $("#virusesContainer").hide()
+                }
+            });
+        });
+    </script>
+</head>
+<body class="image-background">
+<div class="container-fluid">
+    <header>
+        <th:block th:include="~{fragments/navbar}"></th:block>
+    </header>
+    <main >
+        <div class="container">
+            <h1 class="on-one-line">Your Choice</h1>
+            <div class="first-element font-weight-bold">
+                <input class="radioBtnType" type="radio" name="type" value="virus" id="radioViruses"> Viruses<br>
+
+            </div>
+            <div class="second-element font-weight-bold">
+                <input class="radioBtnType" type="radio" name="type" value="capital" id="radioCapitals"> Capitals<br>
+            </div>
+            <div class="break-line">
+                <hr color="white"/>
+            </div>
+
+            <div>
+                <h1 class="text-white bottom-element">Select, what data you want to visualize!</h1>
+            </div>
+        </div>
+
+        <div class="container" id="virusesContainer" style="display:none">
+            <h1 class="text-white">All Viruses</h1>
+            <hr color="white">
+            <table class="text-white" >
+                <thead class="font-weight-bold">
+                <td class="pr-5">Name</td>
+                <td class="pr-5"></td>
+                <td class="pr-5"></td>
+                <td class="pr-5">Magnitude</td>
+                <td class="pr-5"></td>
+                <td class="pr-5"></td>
+                <td>Released On</td>
+                </thead>
+                <tbody>
+                <th:block class="pt-5" th:each="virus : ${viruses} ">
+                    <tr>
+                        <td class="divider"><hr /></td>
+                    </tr>
+                    <td class="mt-5 pr-5" th:text="${virus.name}"></td>
+                    <td class="pr-5"></td>
+                    <td class="pr-5"></td>
+                    <td class="mt-3" th:text="${virus.magnitude}"></td>
+                    <td class="pr-5"></td>
+                    <td class="pr-5"></td>
+                    <td class="mt-3 pr-5" th:text="${virus.releasedOn}"></td>
+                    <div class="buttons-holder w-75 mx-auto d-flex justify-content-between">
+                        <td class="pl-5 pr-5">
+                            <a th:href="@{/viruses/show/edit/{id}(name=${virus.id})}" class="btn re-background">Edit</a>
+                        </td>
+                        <td class="pl-5" >
+                            <a th:href="@{/viruses/show/delete/{id}(name=${virus.id})}" class="btn re-background">Delete</a>
+                        </td>
+                    </div>
+                </th:block>
+                </tbody>
+            </table>
+            <hr color="white">
+        </div>
+        <div class="container" id="capitalsContainer" style="display:none">
+            <h1 class="text-white">All Capitals</h1>
+            <hr color="white">
+            <table class="text-white" >
+                <thead class="font-weight-bold">
+                <td class="pr-5">Name</td>
+                <td class="pr-5"></td>
+                <td class="pr-5"></td>
+                <td class="pr-5">Latitude</td>
+                <td class="pr-5"></td>
+                <td class="pr-5"></td>
+                <td>Longitude</td>
+                </thead>
+                <tbody>
+                <th:block class="pt-5" th:each="capital : ${capitals} ">
+                    <tr>
+                        <td class="divider"><hr /></td>
+                    </tr>
+                    <td class="mt-5 pr-5" th:text="${capital.name}"></td>
+                    <td class="pr-5"></td>
+                    <td class="pr-5"></td>
+                    <td class="mt-3" th:text="${capital.latitude}"></td>
+                    <td class="pr-5"></td>
+                    <td class="pr-5"></td>
+                    <td class="mt-3 pr-5" th:text="${capital.longitude}"></td>
+                </th:block>
+                </tbody>
+            </table>
+            <hr color="white">
+        </div>
+
+
+
+    </main>
+    <footer>
+        <div class="jumbotron re-background mt-4">
+            <div class="text-white p-50 text-center">&copy; CopyRight Sanity Web Design Studios 2019. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

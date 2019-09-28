@@ -1,0 +1,49 @@
+.image-background{
+    background: url("171706.jpg");
+
+}
+
+.re-background {
+    background-color: #900C45;
+    color: white;
+}
+
+.top-center {
+    color: white;
+    display:inline-block;
+}
+
+.first-element {
+    color: white;
+    text-decoration-color: white;
+    float:left;
+    padding-top: 20px;
+    padding-left: 550px;
+}
+
+.on-one-line {
+    color: white;
+    text-decoration-color: white;
+    float:left;
+}
+
+.second-element {
+    color: white;
+    text-decoration-color: white;
+    float:left;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 80px;
+}
+
+.bottom-element {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.break-line {
+    padding-top: 40px;
+}
+
+
+
